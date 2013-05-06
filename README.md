@@ -4,6 +4,8 @@ Sitewards BigPipe
 Implements a BigPipe option to Magento, so a block can be marked as BigPipe an will be rendered after the first flush appeared.
 Facebook uses that technique to avoid a blocking of the loading process by some slower components.
 
+See https://www.facebook.com/note.php?note_id=389414033919 for an explanation by Facebook.
+
 Manual
 ------------------
 Simply define a bigpipe attribute on the block in your layout.xml. That's all!
