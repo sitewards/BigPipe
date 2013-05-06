@@ -6,7 +6,7 @@ Facebook uses that technique to avoid a blocking of the loading process by some 
 
 See https://www.facebook.com/note.php?note_id=389414033919 for an explanation by Facebook.
 
-See a demo for the breadcrumb at: http://bigpipe.sitewards.net/index.php/sony-vaio-vgn-txn27n-b-11-1-notebook-pc.html
+See a demo for the breadcrumb at: http://bigpipe.sitewards.net/index.php/sony-vaio-vgn-txn27n-b-11-1-notebook-pc.html.
 The breadcrumb was on purpose delayed for 3 seconds, so you can see the effect.
 
 Manual
@@ -36,5 +36,7 @@ Ideas
 Contact
 ------------------
 magento@sitewards.com
+
+License: OSL 3.0
 
 Contribution is appreciated!
