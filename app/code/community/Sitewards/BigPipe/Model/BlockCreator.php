@@ -1,4 +1,13 @@
 <?php
+/**
+ * Creates the original block based on a temporary replacement
+ *
+ * @category    Sitewards
+ * @package     Sitewards_BigPipe
+ * @copyright   Copyright (c) Sitewards GmbH (http://www.sitewards.com)
+ * @contact     magento@sitewards.com
+ * @license     OSL-3.0
+ */
 class Sitewards_BigPipe_Model_BlockCreator {
 	/**
 	 * creates the original block which will be replaced into the content

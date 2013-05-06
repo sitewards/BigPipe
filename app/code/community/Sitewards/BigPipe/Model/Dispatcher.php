@@ -1,4 +1,13 @@
 <?php
+/**
+ * Dispatches bigpipe blocks which will be loaded after the first flush
+ *
+ * @category    Sitewards
+ * @package     Sitewards_BigPipe
+ * @copyright   Copyright (c) Sitewards GmbH (http://www.sitewards.com)
+ * @contact     magento@sitewards.com
+ * @license     OSL-3.0
+ */
 class Sitewards_BigPipe_Model_Dispatcher {
 	protected function flush() {
 		flush();

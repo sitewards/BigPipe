@@ -1,4 +1,13 @@
 <?php
+/**
+ * Transfers data and called methods from one block to another
+ *
+ * @category    Sitewards
+ * @package     Sitewards_BigPipe
+ * @copyright   Copyright (c) Sitewards GmbH (http://www.sitewards.com)
+ * @contact     magento@sitewards.com
+ * @license     OSL-3.0
+ */
 class Sitewards_BigPipe_Model_BlockTransfer {
 	/**
 	 * transfers information from source to target block

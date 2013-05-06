@@ -1,4 +1,13 @@
 <?php
+/**
+ * Rewrite of Core_Layout to replace bigpipe blocks with a Loading information
+ *
+ * @category    Sitewards
+ * @package     Sitewards_BigPipe
+ * @copyright   Copyright (c) Sitewards GmbH (http://www.sitewards.com)
+ * @contact     magento@sitewards.com
+ * @license     OSL-3.0
+ */
 class Sitewards_BigPipe_Model_Core_Layout extends Mage_Core_Model_Layout {
 	/**
 	 * Add block object to layout based on xml node data

@@ -1,4 +1,13 @@
 <?php
+/**
+ * Memory of blocks which will be loaded via bigpipe
+ *
+ * @category    Sitewards
+ * @package     Sitewards_BigPipe
+ * @copyright   Copyright (c) Sitewards GmbH (http://www.sitewards.com)
+ * @contact     magento@sitewards.com
+ * @license     OSL-3.0
+ */
 class Sitewards_BigPipe_Model_Memory {
 	private $layout;
 	public function setLayout(Mage_Core_Model_Layout $layout) {

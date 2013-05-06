@@ -1,4 +1,13 @@
 <?php
+/**
+ * block that will be rendered while the original block is still being loaded
+ *
+ * @category    Sitewards
+ * @package     Sitewards_BigPipe
+ * @copyright   Copyright (c) Sitewards GmbH (http://www.sitewards.com)
+ * @contact     magento@sitewards.com
+ * @license     OSL-3.0
+ */
 class Sitewards_BigPipe_Block_Loading
 	extends Mage_Core_Block_Template
 	implements Sitewards_BigPipe_Block_CallsCollector, Sitewards_BigPipe_Block_Node {
