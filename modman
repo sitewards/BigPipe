@@ -1,0 +1,4 @@
+/app/code/community/Sitewards/BigPipe /app/code/community/Sitewards/BigPipe
+/app/design/frontend/base/default/template/sitewards/afterload.phtml /app/design/frontend/base/default/template/sitewards/afterload.phtml
+/app/design/frontend/base/default/template/sitewards/loading.phtml /app/design/frontend/base/default/template/sitewards/loading.phtml
+/app/etc/modules/Sitewards_BigPipe.xml /app/etc/modules/Sitewards_BigPipe.xml

@@ -1,0 +1,12 @@
+<script type="text/javascript">
+	document.getElementById("<?php echo $this->getElementId(); ?>").innerHTML = "<?php
+		echo str_replace(
+			"\n",
+			'',
+			addcslashes(
+				$this->getHtmlContent(),
+				'"'
+			)
+		);
+	?>";
+</script>

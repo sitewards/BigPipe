@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Sitewards_BigPipe.xml
+ *	- Activate module,
+ *	- Specify code pool,
+ *	- Set-up dependencies
+ *
+ * @category    Sitewards
+ * @package     Sitewards_BigPipe
+ * @copyright   Copyright (c) 2013 Sitewards GmbH (http://www.sitewards.com/)
+ */
+-->
+<config>
+	<modules>
+		<Sitewards_BigPipe>
+			<active>true</active>
+			<codePool>community</codePool>
+			<depends>
+				<Mage_Core />
+			</depends>
+		</Sitewards_BigPipe>
+	</modules>
+</config>

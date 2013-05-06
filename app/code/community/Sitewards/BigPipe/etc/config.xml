@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * config.xml
+ *  - rewrite and setup models,
+ *  - setup blocks,
+ *  - define observers
+ *
+ * @category    Sitewards
+ * @package     Sitewards_BigPipe
+ * @copyright   Copyright (c) 2013 Sitewards GmbH (http://www.sitewards.com/)
+ */
+-->
+<config>
+	<modules>
+		<Sitewards_BigPipe>
+			<version>0.1.0</version>
+		</Sitewards_BigPipe>
+	</modules>
+	<global>
+		<blocks>
+			<sitewards_bigpipe>
+				<class>Sitewards_BigPipe_Block</class>
+			</sitewards_bigpipe>
+		</blocks>
+		<models>
+			<core>
+				<rewrite>
+					<layout>Sitewards_BigPipe_Model_Core_Layout</layout>
+				</rewrite>
+			</core>
+			<sitewards_bigpipe>
+				<class>Sitewards_BigPipe_Model</class>
+			</sitewards_bigpipe>
+		</models>
+		<events>
+			<controller_front_send_response_after>
+				<observers>
+					<sitewards_bigpipe>
+						<class>Sitewards_BigPipe_Model_Dispatcher</class>
+						<method>outputBigPipeBlocks</method>
+					</sitewards_bigpipe>
+				</observers>
+			</controller_front_send_response_after>
+		</events>
+	</global>
+</config>
