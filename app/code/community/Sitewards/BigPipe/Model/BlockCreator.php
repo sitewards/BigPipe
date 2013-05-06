@@ -35,7 +35,7 @@ class Sitewards_BigPipe_Model_BlockCreator {
 	 * @param Varien_Object $block
 	 */
 	private function transferFromBigPipeBlock(Varien_Object $bigPipeBlock, Varien_Object $block) {
-		$blocktransfer = Mage::getModel('sitewards_bigpipe/blocktransfer');
+		$blocktransfer = Mage::getModel('sitewards_bigpipe/blockTransfer');
 		$blocktransfer->transfer($bigPipeBlock, $block);
 
 	}

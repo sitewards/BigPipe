@@ -27,7 +27,7 @@ class Sitewards_BigPipe_Model_Dispatcher {
 	 * @return Mage_Core_Block_Abstract
 	 */
 	private function getGeneratedOriginalBlock (Sitewards_BigPipe_Block_Node $intermediateBlock) {
-		$blockcreator = Mage::getModel('sitewards_bigpipe/blockcreator');
+		$blockcreator = Mage::getModel('sitewards_bigpipe/blockCreator');
 		return $blockcreator->createOriginalBlock($intermediateBlock);
 	}
 
