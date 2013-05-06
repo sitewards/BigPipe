@@ -1,0 +1,10 @@
+{
+    "name": "sitewards/bigpipe",
+	"license": "OSL-3.0",
+    "type": "magento-module",
+    "description": "Implements a BigPipe option to Magento, so a block can be marked as BigPipe an will be rendered after the first flush appeared. Facebook uses that technique to avoid a blocking of the loading process by some slower components.",
+    "homepage": "http://www.sitewards.com",
+    "require": {
+        "magento-hackathon/magento-composer-installer": "*",
+    }
+}
