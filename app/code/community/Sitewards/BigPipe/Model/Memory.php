@@ -51,7 +51,7 @@ class Sitewards_BigPipe_Model_Memory {
 	 * @param Sitewards_BigPipe_Block_Node $bigPipeBlock
 	 */
 	private function removeOldBlock (Sitewards_BigPipe_Block_Node $bigPipeBlock) {
-		// Remove old instanciated "sitewards_bigpipe/loading" block first
+		// Remove old instantiated "sitewards_bigpipe/loading" block first
 		$this->layout->removeBlock($bigPipeBlock->getNodeName());
 	}
 
