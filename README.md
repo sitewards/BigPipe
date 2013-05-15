@@ -32,6 +32,7 @@ Ideas
 * javascript callback to execute some code after your block was really loaded
 * remove core_layout rewrite
 * Check for disabled gzip
+* add an optional flush after </head> so css and js can be loaded while server is still processing the site
 
 Contact
 ------------------
