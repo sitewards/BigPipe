@@ -18,6 +18,10 @@ class Sitewards_BigPipe_Model_BlockCreator {
 	public function createOriginalBlock(Sitewards_BigPipe_Block_Node $sourceBlock) {
 		$block = $this->generateBlock($sourceBlock);
 		$this->transferFromBigPipeBlock($sourceBlock, $block);
+		$sourceChildBlocks = $sourceBlock->getSortedChildBlocks();
+		foreach ($sourceChildBlocks as $sourceChildBlock) {
+			$this->createOriginalBlock($sourceChildBlock);
+		}
 		return $block;
 	}
 
@@ -28,13 +32,14 @@ class Sitewards_BigPipe_Model_BlockCreator {
 	 * @return Mage_Core_Block_Abstract
 	 */
 	private function generateBlock(Sitewards_BigPipe_Block_Node $sourceBlock) {
+		/* @var $node SimpleXMLElement */
 		$node = $sourceBlock->getOriginalNode();
 		$layout = Mage::app()->getLayout();
+		$nodeName = $sourceBlock->getNodeName();
 
-		$layout->generateOriginalBlock($node, $sourceBlock->getParent());
-		$layout->generateBlocks($node);
+		$layout->replaceBlock($node, $sourceBlock->getParent());
 
-		return  $layout->getBlock($sourceBlock->getNodeName());
+		return $layout->getBlock($nodeName);
 	}
 
 	/**

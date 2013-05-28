@@ -11,6 +11,7 @@
 class Sitewards_BigPipe_Model_Dispatcher {
 	protected function flush() {
 		flush();
+		ob_flush();
 	}
 
 	/**

@@ -16,13 +16,9 @@ Simply define a bigpipe attribute on the block in your layout.xml. That's all!
 Example to move the loading of breadcrumb to the end of your website, while most of the content is already delivered:
 <block type="page/html_breadcrumbs" name="breadcrumbs" bigpipe="true"/>
 
-The Loading block collects all called method and set data and transfers it later to the real target block, so even an ->addCrumb call in that example is executed on the final block, too. That is currently not working for child blocks of the big pipe block.
+The Loading block collects all called method and set data and transfers it later to the real target block, so even an ->addCrumb call in that example is executed on the final block, too.
 
 You have to disable gzip: http://stackoverflow.com/questions/4870697/php-flush-that-works-even-in-nginx
-
-Todos
-------------------
-* implement called methods wrapper for child blocks of bigpipe blocks
 
 Ideas
 ------------------

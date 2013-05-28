@@ -14,24 +14,30 @@ class Sitewards_BigPipe_Model_Memory {
 		$this->layout = $layout;
 	}
 
-	private $bigPipes = array();
+	private $bigPipesOutput = array();
+	private $bigPipesChildren = array();
 
 	/**
 	 * adds a block to the memory
 	 *
 	 * @param SimpleXMLElement $node
 	 * @param SimpleXMLElement $parent
+	 * @param boolean $output
 	 * @throws Exception throws exception if block for node name does not exist
 	 */
-	public function add(SimpleXMLElement $node, SimpleXMLElement $parent) {
+	public function add(SimpleXMLElement $node, SimpleXMLElement $parent, $output = false) {
 		$name = (string)$node['name'];
 		$block = $this->layout->getBlock($name);
 		if (!$block) {
 			throw new Exception('block for node ' . $name . ' does not exist');
 		}
-		$block->setOriginalNode($node);
-		$block->setParent($parent);
-		$this->bigPipes[] = $block;
+		$block->setOriginalNode(clone $node);
+		$block->setParent(clone $parent);
+		if ($output) {
+			$this->bigPipesOutput[] = $block;
+		} else {
+			$this->bigPipesChildren[] = $block;
+		}
 	}
 
 	/**
@@ -41,7 +47,6 @@ class Sitewards_BigPipe_Model_Memory {
 	 */
 	public function getNextBigPipeBlock() {
 		$bigPipeBlock = $this->shiftBlocks();
-		$this->removeOldBlock($bigPipeBlock);
 		return $bigPipeBlock;
 	}
 
@@ -51,17 +56,7 @@ class Sitewards_BigPipe_Model_Memory {
 	 * @return Sitewards_BigPipe_Block_Node
 	 */
 	private function shiftBlocks () {
-		return array_shift($this->bigPipes);
-	}
-
-	/**
-	 * removes a block from the layout
-	 *
-	 * @param Sitewards_BigPipe_Block_Node $bigPipeBlock
-	 */
-	private function removeOldBlock (Sitewards_BigPipe_Block_Node $bigPipeBlock) {
-		// Remove old instantiated "sitewards_bigpipe/loading" block first
-		$this->layout->removeBlock($bigPipeBlock->getNodeName());
+		return array_shift($this->bigPipesOutput);
 	}
 
 	/**
@@ -70,6 +65,6 @@ class Sitewards_BigPipe_Model_Memory {
 	 * @return bool
 	 */
 	public function hasBigPipeBlock () {
-		return (count($this->bigPipes) > 0);
+		return (count($this->bigPipesOutput) > 0);
 	}
 }

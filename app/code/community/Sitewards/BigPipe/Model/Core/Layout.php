@@ -16,27 +16,52 @@ class Sitewards_BigPipe_Model_Core_Layout extends Mage_Core_Model_Layout {
 	 * @param Varien_Simplexml_Element $parent
 	 * @return Mage_Core_Model_Layout
 	 */
-	public function generateOriginalBlock (SimpleXMLElement $node, SimpleXMLElement $parent) {
-		return parent::_generateBlock($node, $parent);
+	public function replaceBlock (SimpleXMLElement $node, SimpleXMLElement $parent) {
+		$this->removeBlock((string)$node['name']);
+		return $this->_generateBlock($node, $parent);
 	}
 
 	/**
+	 * Create layout blocks hierarchy from layout xml configuration
 	 * handles special bigpipe replacement
 	 *
-	 * @param Varien_Simplexml_Element $node
-	 * @param Varien_Simplexml_Element $parent
-	 * @return Mage_Core_Model_Layout
+	 * @param Mage_Core_Layout_Element|null $parent
+	 * @param boolean                       $parentIsBigPipe
 	 */
-	protected function _generateBlock ($node, $parent) {
-		$originalNode = $this->prepareNodeForBigPipe($node);
-		$return = parent::_generateBlock($node, $parent);
-		if ($originalNode) {
-			$this->storeOriginalNode($originalNode, $parent);
+	public function generateBlocks ($parent = null, $parentIsBigPipe = false) {
+		if (empty($parent)) {
+			$parent = $this->getNode();
 		}
-		return $return;
+		foreach ($parent as $node) {
+			$attributes = $node->attributes();
+			if ((bool)$attributes->ignore) {
+				continue;
+			}
+			switch ($node->getName()) {
+				case 'block':
+					$isBigPipe = ($parentIsBigPipe OR $node->attributes()->bigpipe);
+					if ($isBigPipe) {
+						$originalNode = $this->prepareNodeForBigPipe($node, $isBigPipe);
+					}
+					$this->_generateBlock($node, $parent);
+					if ($isBigPipe) {
+						$this->storeOriginalNode($originalNode, $parent);
+					}
+					$this->generateBlocks($node, $isBigPipe);
+					break;
+
+				case 'reference':
+					$this->generateBlocks($node);
+					break;
+
+				case 'action':
+					$this->_generateAction($node, $parent);
+					break;
+			}
+		}
 	}
 
-	public function removeBlock ($blockName) {
+	private function removeBlock ($blockName) {
 		unset($this->_blocks[$blockName]);
 	}
 
@@ -47,12 +72,10 @@ class Sitewards_BigPipe_Model_Core_Layout extends Mage_Core_Model_Layout {
 	 * @return SimpleXMLElement
 	 */
 	private function prepareNodeForBigPipe (SimpleXMLElement $node) {
-		if ($node->attributes()->bigpipe) {
-			$originalNode = clone $node;
-			unset($node['class']);
-			$node['type'] = 'sitewards_bigpipe/loading';
-			return $originalNode;
-		}
+		$originalNode = clone $node;
+		unset($node['class']);
+		$node['type'] = 'sitewards_bigpipe/wrapper';
+		return $originalNode;
 	}
 
 	/**
@@ -64,6 +87,6 @@ class Sitewards_BigPipe_Model_Core_Layout extends Mage_Core_Model_Layout {
 	private function storeOriginalNode (SimpleXMLElement $originalNode, SimpleXMLElement $parent) {
 		$bigpipes = Mage::getSingleton('sitewards_bigpipe/memory');
 		$bigpipes->setLayout($this);
-		$bigpipes->add($originalNode, $parent);
+		$bigpipes->add($originalNode, $parent, $originalNode->attributes()->bigpipe);
 	}
 }
