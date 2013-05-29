@@ -21,6 +21,11 @@ class Sitewards_BigPipe_Block_Wrapper
 		return parent::_construct();
 	}
 
+	/**
+	 * returns output of loading block if this is the top wrapper
+	 *
+	 * @return string
+	 */
 	protected function _toHtml() {
 		$html = '';
 		// only output the loading for the top level bigpipe wrapper
