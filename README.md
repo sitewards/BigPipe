@@ -28,7 +28,7 @@ Ideas
 * javascript callback to execute some code after your block was really loaded
 * remove core_layout rewrite
 * Check for disabled gzip
-* add an optional flush after </head> so css and js can be loaded while server is still processing the site
+* add an optional flush after </head> so css and js can be loaded while server is still processing the site (after first research we decided this will be a new module and is not related to BigPipe)
 
 Contact
 ------------------
