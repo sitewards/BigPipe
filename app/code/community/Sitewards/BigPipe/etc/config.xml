@@ -8,7 +8,9 @@
  *
  * @category    Sitewards
  * @package     Sitewards_BigPipe
- * @copyright   Copyright (c) 2013 Sitewards GmbH (http://www.sitewards.com/)
+ * @copyright   Copyright (c) Sitewards GmbH (http://www.sitewards.com)
+ * @contact     magento@sitewards.com
+ * @license     OSL-3.0
  */
 -->
 <config>
@@ -33,6 +35,8 @@
 				<class>Sitewards_BigPipe_Model</class>
 			</sitewards_bigpipe>
 		</models>
+	</global>
+	<frontend>
 		<events>
 			<controller_front_send_response_before>
 				<observers>
@@ -51,5 +55,12 @@
 				</observers>
 			</controller_front_send_response_after>
 		</events>
-	</global>
+		<layout>
+			<updates>
+				<sitewards_bigpipe>
+					<file>sitewards/bigpipe.xml</file>
+				</sitewards_bigpipe>
+			</updates>
+		</layout>
+	</frontend>
 </config>

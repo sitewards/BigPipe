@@ -29,7 +29,6 @@ Ideas
 * remove core_layout rewrite
 * Check for disabled gzip
 * add an optional flush after </head> so css and js can be loaded while server is still processing the site
-* extract javascript, to allow X-Content-Security-Policy header
 
 Contact
 ------------------

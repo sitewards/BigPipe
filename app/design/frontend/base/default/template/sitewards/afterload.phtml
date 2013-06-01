@@ -1,12 +1,3 @@
-<script type="text/javascript">
-	document.getElementById("<?php echo $this->getElementId(); ?>").innerHTML = "<?php
-		echo str_replace(
-			"\n",
-			'',
-			addcslashes(
-				$this->getHtmlContent(),
-				'"'
-			)
-		);
-	?>";
-</script>
+<div data-target="<?php echo $this->getElementId(); ?>" class="bigpipe"><?php
+	echo $this->getHtmlContent(); ?>
+</div>

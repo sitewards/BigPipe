@@ -8,7 +8,7 @@
  * @contact     magento@sitewards.com
  * @license     OSL-3.0
  */
-class Sitewards_BigPipe_Block_Afterloadscript extends Mage_Core_Block_Template {
+class Sitewards_BigPipe_Block_Afterload extends Mage_Core_Block_Template {
 	private $bigPipeId;
 	public function setBigPipeId($bigPipeId) {
 		$this->bigPipeId = $bigPipeId;

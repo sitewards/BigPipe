@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * sitewards/bigpipe.xml
+ * Layout file for the Sitewards BigPipe module
+ * Adds special javascript file to head
+ *
+ * @category    Sitewards
+ * @package     Sitewards_BigPipe
+ * @copyright   Copyright (c) Sitewards GmbH (http://www.sitewards.com)
+ * @contact     magento@sitewards.com
+ * @license     OSL-3.0
+ */
+-->
+<layout>
+	<default>
+		<reference name="head">
+			<action method="addItem"><type>skin_js</type><name>js/sitewards/bigpipe.js</name></action>
+		</reference>
+	</default>
+</layout>
