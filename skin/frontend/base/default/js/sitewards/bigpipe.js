@@ -5,7 +5,7 @@ var bigpipeInterval = window.setInterval(
 			var bigpipes = bigpipe.getElementsByClassName('bigpipe');
 			if (bigpipes.length > 0) {
 				for (var x = 0; x < bigpipes.length; x++) {
-					document.getElementById(bigpipes[x].getAttribute('data-target')).innerHTML = bigpipes[x].innerHTML;
+					document.getElementById(bigpipes[x].getAttribute('data-target')).outerHTML = bigpipes[x].innerHTML;
 					bigpipes[x].parentNode.removeChild(bigpipes[x]);
 				};
 			}
