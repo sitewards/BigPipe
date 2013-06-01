@@ -18,6 +18,8 @@ class Sitewards_BigPipe_Model_Memory {
 	private $bigPipesChildren = array();
 	private $bigPipesSorted = array();
 
+	private $isSorted = false;
+
 	/**
 	 * adds a block to the memory
 	 *
@@ -58,26 +60,26 @@ class Sitewards_BigPipe_Model_Memory {
 	 */
 	private function shiftBlocks () {
 		$this->sortBigPipes();
-		return array_shift($this->bigPipesSorted);
+		return array_shift($this->bigPipesOutput);
 	}
 
 	/**
 	 * sort the blocks by bigpipe-order attribute, if not already done
 	 */
 	private function sortBigPipes() {
-		if (count($this->bigPipesSorted) == 0) {
-			$this->bigPipesSorted = $this->bigPipesOutput;
+		if (!$this->isSorted) {
 			usort(
-				$this->bigPipesSorted,
-				function (SimpleXMLElement $a, SimpleXMLElement $b) {
-					$aOrder = (int)$a->attributes()->{'bigpipe-order'};
-					$bOrder = (int)$b->attributes()->{'bigpipe-order'};
+				$this->bigPipesOutput,
+				function (Sitewards_BigPipe_Block_Node $a, Sitewards_BigPipe_Block_Node $b) {
+					$aOrder = (int)$a->getOriginalNode()->attributes()->{'bigpipe-order'};
+					$bOrder = (int)$b->getOriginalNode()->attributes()->{'bigpipe-order'};
 					if ($aOrder == $bOrder) {
 						return 0;
 					}
 					return ($aOrder < $bOrder) ? -1 : 1;
 				}
 			);
+			$this->isSorted = true;
 		}
 	}
 
