@@ -28,6 +28,9 @@ class Sitewards_BigPipe_Model_Dispatcher {
 
 			$this->flush();
 		}
+
+		$tags = Mage::getModel('sitewards_bigpipe/tags');
+		echo $tags->getEndTags();
 	}
 
 	/**

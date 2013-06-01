@@ -14,7 +14,7 @@
 <config>
 	<modules>
 		<Sitewards_BigPipe>
-			<version>0.1.1</version>
+			<version>0.1.2</version>
 		</Sitewards_BigPipe>
 	</modules>
 	<global>
@@ -34,6 +34,14 @@
 			</sitewards_bigpipe>
 		</models>
 		<events>
+			<controller_front_send_response_before>
+				<observers>
+					<sitewards_bigpipe>
+						<class>Sitewards_BigPipe_Model_Tags</class>
+						<method>stripEndTags</method>
+					</sitewards_bigpipe>
+				</observers>
+			</controller_front_send_response_before>
 			<controller_front_send_response_after>
 				<observers>
 					<sitewards_bigpipe>

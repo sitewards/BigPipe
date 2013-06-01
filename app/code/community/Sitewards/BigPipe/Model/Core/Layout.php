@@ -41,7 +41,7 @@ class Sitewards_BigPipe_Model_Core_Layout extends Mage_Core_Model_Layout {
 				case 'block':
 					$isBigPipe = ($parentIsBigPipe OR $node->attributes()->bigpipe);
 					if ($isBigPipe) {
-						$originalNode = $this->prepareNodeForBigPipe($node, $isBigPipe);
+						$originalNode = $this->prepareNodeForBigPipe($node);
 					}
 					$this->_generateBlock($node, $parent);
 					if ($isBigPipe) {
