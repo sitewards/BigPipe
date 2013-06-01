@@ -25,7 +25,7 @@ Ideas
 * implement options for different templates on loading block, so each "Loading" dialog on your page can have a different template
 * implement an order, so you can define which block should be loaded first, second ...
 * Mashup with Houston to parallelize rendering of blocks
-* javascript callback to execute some code after your block was really loaded
+* javascript callback to execute some code after your block was really loaded (should be implemented using prototype event/observer)
 * remove core_layout rewrite
 * Check for disabled gzip
 * add an optional flush after </head> so css and js can be loaded while server is still processing the site (after first research we decided this will be a new module and is not related to BigPipe)
