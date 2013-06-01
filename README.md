@@ -18,18 +18,23 @@ Example to move the loading of breadcrumb to the end of your website, while most
 
 The Loading block collects all called method and set data and transfers it later to the real target block, so even an ->addCrumb call in that example is executed on the final block, too.
 
+It's possible to define an order which bigpipe block should be rendered first:
+<block type="page/html_breadcrumbs" name="breadcrumbs" bigpipe="true" bigpipe-order="20" />
+<block type="foo/bar" name="foo" bigpipe="true" bigpipe-order="10" />
+In that case foo will be rendered, flushed and after that breadcrumb will be rendered and flushed
+
 You have to disable gzip: http://stackoverflow.com/questions/4870697/php-flush-that-works-even-in-nginx
 
 Ideas
 ------------------
 * implement options for different templates on loading block, so each "Loading" dialog on your page can have a different template
-* implement an order, so you can define which block should be loaded first, second ...
 * Mashup with Houston to parallelize rendering of blocks
 * javascript callback to execute some code after your block was really loaded (should be implemented using prototype event/observer)
 * remove core_layout rewrite
 * Check for disabled gzip
 * add an optional flush after </head> so css and js can be loaded while server is still processing the site (after first research we decided this will be a new module and is not related to BigPipe)
 * add feature for a big pipe block in a big pipe, which will be rendered after the parent was rendered
+* add chunk to small blocks, so flush is forced even when chunk size configured by webserver is not already reached
 
 Contact
 ------------------
