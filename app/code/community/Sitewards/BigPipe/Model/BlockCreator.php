@@ -20,7 +20,9 @@ class Sitewards_BigPipe_Model_BlockCreator {
 		$this->transferFromBigPipeBlock($sourceBlock, $block);
 		$sourceChildBlocks = $sourceBlock->getSortedChildBlocks();
 		foreach ($sourceChildBlocks as $sourceChildBlock) {
-			$this->createOriginalBlock($sourceChildBlock);
+			if ($sourceChildBlock instanceof Sitewards_BigPipe_Block_Node) {
+				$this->createOriginalBlock($sourceChildBlock);
+			}
 		}
 		return $block;
 	}
