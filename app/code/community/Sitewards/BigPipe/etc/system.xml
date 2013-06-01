@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * system.xml
+ *
+ * @category    Sitewards
+ * @package     Sitewards_BigPipe
+ * @copyright   Copyright (c) Sitewards GmbH (http://www.sitewards.com)
+ * @contact     magento@sitewards.com
+ * @license     OSL-3.0
+ */
+-->
+<config>
+	<tabs>
+		<sitewards_bigpipe_tab translate="label" module="sitewards_bigpipe">
+			<label>Sitewards BigPipe</label>
+			<sort_order>1000</sort_order>
+		</sitewards_bigpipe_tab>
+	</tabs>
+
+	<sections>
+		<sitewards_bigpipe_config translate="label" module="sitewards_bigpipe">
+			<label>Configuration</label>
+			<tab>sitewards_bigpipe_tab</tab>
+			<show_in_default>1</show_in_default>
+			<show_in_website>1</show_in_website>
+			<show_in_store>1</show_in_store>
+			<sort_order>10</sort_order>
+			<groups>
+				<sitewards_bigpipe_general translate="label">
+					<label>General Options</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>1</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<buffer_size translate="label comment">
+							<label>Buffer Size</label>
+							<comment>Buffer size of webserver, which has to be filled to flush html blocks</comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>10</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</buffer_size>
+						<info translate="label comment">
+							<label>Support / Contact</label>
+							<comment><![CDATA[<a href="mailto:magento@sitewards.com">magento@sitewards.com</a>, <a href="https://github.com/sitewards/BigPipe" target="_blank">github/sitewards</a> and <a href="http://www.sitewards.com" target="_blank">www.sitewards.com</a>.]]></comment>
+							<frontend_type>label</frontend_type>
+							<sort_order>20</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</info>
+					</fields>
+				</sitewards_bigpipe_general>
+			</groups>
+		</sitewards_bigpipe_config>
+	</sections>
+</config>

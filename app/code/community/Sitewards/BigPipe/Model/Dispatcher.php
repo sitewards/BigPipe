@@ -18,25 +18,72 @@ class Sitewards_BigPipe_Model_Dispatcher {
 	 * outputs the big pipe blocks
 	 */
 	public function outputBigPipeBlocks() {
-		$this->flush();
-
-		$start = Mage::app()->getLayout()->createBlock('sitewards_bigpipe/container_start');
-		echo $start->toHtml();
+		echo $this->getContainerStart();
 
 		$memory = Mage::getSingleton('sitewards_bigpipe/memory');
 		while ($memory->hasBigPipeBlock()) {
 			$block = $memory->getNextBigPipeBlock();
 			$originalBlock = $this->getGeneratedOriginalBlock($block);
-			echo $this->getOutput($block->getBigPipeId(), $originalBlock);
-
-			$this->flush();
+			$this->outputBlock($block->getBigPipeId(), $originalBlock);
 		}
 
+		echo $this->getDocumentEnd();
+	}
+
+	/**
+	 * returns document html string end
+	 *
+	 * @return string
+	 */
+	private function getDocumentEnd() {
 		$end = Mage::app()->getLayout()->createBlock('sitewards_bigpipe/container_end');
-		echo $end->toHtml();
+		$return = $end->toHtml();
 
 		$tags = Mage::getModel('sitewards_bigpipe/tags');
-		echo $tags->getEndTags();
+		$return .= $tags->getEndTags();
+
+		return $return;
+	}
+
+	/**
+	 * returns start tag of bigpipe container
+	 *
+	 * @return string
+	 */
+	private function getContainerStart() {
+		$this->flush();
+
+		$start = Mage::app()->getLayout()->createBlock('sitewards_bigpipe/container_start');
+		return $start->toHtml();
+	}
+
+	/**
+	 * outputs one block
+	 *
+	 * @param int                      $bigPipeId
+	 * @param Mage_Core_Block_Abstract $block
+	 */
+	private function outputBlock($bigPipeId, Mage_Core_Block_Abstract $block) {
+		$output = $this->getOutput($bigPipeId, $block);
+		if (Mage::getSingleton('sitewards_bigpipe/memory')->hasBigPipeBlock()) {
+			$output .= $this->fillToBufferSize($output);
+		}
+		echo $output;
+		$this->flush();
+	}
+
+	/**
+	 * fills output with spaces until buffer size is reached
+	 *
+	 * @param string $output
+	 * @return string
+	 */
+	private function fillToBufferSize($output) {
+		$bufferSize = Mage::getStoreConfig('sitewards_bigpipe_config/sitewards_bigpipe_general/buffer_size');
+		if (strlen($output) < $bufferSize) {
+			return str_repeat(' ', $bufferSize - strlen($output));
+		}
+		return '';
 	}
 
 	/**

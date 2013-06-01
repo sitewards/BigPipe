@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * adminhtml.xml
+ *
+ * @category    Sitewards
+ * @package     Sitewards_BigPipe
+ * @copyright   Copyright (c) Sitewards GmbH (http://www.sitewards.com)
+ * @contact     magento@sitewards.com
+ * @license     OSL-3.0
+ */
+-->
+<config>
+	<acl>
+		<resources>
+			<admin>
+				<children>
+					<system>
+						<children>
+							<config>
+								<children>
+									<sitewards_bigpipe_config>
+										<title>Sitewards BigPipe - Configuration</title>
+										<sort_order>1000</sort_order>
+									</sitewards_bigpipe_config>
+								</children>
+							</config>
+						</children>
+					</system>
+				</children>
+			</admin>
+		</resources>
+	</acl>
+</config>

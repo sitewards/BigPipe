@@ -16,7 +16,7 @@
 <config>
 	<modules>
 		<Sitewards_BigPipe>
-			<version>0.1.2</version>
+			<version>0.1.3</version>
 		</Sitewards_BigPipe>
 	</modules>
 	<global>
@@ -35,6 +35,11 @@
 				<class>Sitewards_BigPipe_Model</class>
 			</sitewards_bigpipe>
 		</models>
+		<helpers>
+			<sitewards_bigpipe>
+				<class>Sitewards_BigPipe_Helper</class>
+			</sitewards_bigpipe>
+		</helpers>
 	</global>
 	<frontend>
 		<events>
@@ -63,4 +68,11 @@
 			</updates>
 		</layout>
 	</frontend>
+	<default>
+		<sitewards_bigpipe_config>
+			<sitewards_bigpipe_general>
+				<buffer_size>4096</buffer_size>
+			</sitewards_bigpipe_general>
+		</sitewards_bigpipe_config>
+	</default>
 </config>
