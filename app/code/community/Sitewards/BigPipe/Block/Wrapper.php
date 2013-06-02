@@ -91,6 +91,7 @@ class Sitewards_BigPipe_Block_Wrapper
 	 */
 	public function __call($method, $args) {
 		$this->calledMethods[] = array('method' => $method, 'args' => $args);
+		return $this;
 	}
 
 	/**
