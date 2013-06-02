@@ -4,5 +4,6 @@
 /app/design/frontend/base/default/template/sitewards/container/end.phtml /app/design/frontend/base/default/template/sitewards/container/end.phtml
 /app/design/frontend/base/default/template/sitewards/container/start.phtml /app/design/frontend/base/default/template/sitewards/container/start.phtml
 /app/design/frontend/base/default/template/sitewards/loading.phtml /app/design/frontend/base/default/template/sitewards/loading.phtml
+/app/design/frontend/base/default/template/sitewards/wrapper.phtml /app/design/frontend/base/default/template/sitewards/wrapper.phtml
 /app/etc/modules/Sitewards_BigPipe.xml /app/etc/modules/Sitewards_BigPipe.xml
 /skin/frontend/base/default/js/sitewards/bigpipe.js /skin/frontend/base/default/js/sitewards/bigpipe.js

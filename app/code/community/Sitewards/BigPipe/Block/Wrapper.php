@@ -30,11 +30,51 @@ class Sitewards_BigPipe_Block_Wrapper
 		$html = '';
 		// only output the loading for the top level bigpipe wrapper
 		if ($this->hasDummyOutput()) {
-			$loadingBlock = Mage::app()->getLayout()->createBlock('sitewards_bigpipe/loading');
-			$loadingBlock->setElementId($this->getElementId());
-			$html .= $loadingBlock->toHtml();
+			$html .= $this->getTemplateBlock()->toHtml();
 		}
 		return $html;
+	}
+
+	/**
+	 * returns the template block which is used, when this is a real output block
+	 *
+	 * @return Mage_Core_Block_Template
+	 */
+	private function getTemplateBlock() {
+		$wrapperBlock = Mage::app()->getLayout()->createBlock('core/template');
+		$wrapperBlock->setTemplate('sitewards/wrapper.phtml');
+		$wrapperBlock->setElementId($this->getElementId());
+		$wrapperBlock->setChild('content', $this->getLoadingBlock());
+		return $wrapperBlock;
+	}
+
+	/**
+	 * returns the loading block
+	 *
+	 * @return Mage_Core_Block_Template
+	 */
+	private function getLoadingBlock() {
+		$loadingBlock = Mage::app()->getLayout()->createBlock('core/template');
+		if ($this->loadingTemplate) {
+			$loadingBlock->setTemplate($this->loadingTemplate);
+		} else {
+			$loadingBlock->setTemplate('sitewards/loading.phtml');
+		}
+		return $loadingBlock;
+	}
+
+	/**
+	 * the loading template
+	 * @var string
+	 */
+	private $loadingTemplate = '';
+
+	/**
+	 * set loading template
+	 * @param $template
+	 */
+	public function setLoadingTemplate($template) {
+		$this->loadingTemplate = $template;
 	}
 
 	/**
