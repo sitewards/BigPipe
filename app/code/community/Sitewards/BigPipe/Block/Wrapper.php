@@ -42,7 +42,7 @@ class Sitewards_BigPipe_Block_Wrapper
 	 */
 	private function getTemplateBlock() {
 		$wrapperBlock = Mage::app()->getLayout()->createBlock('core/template');
-		$wrapperBlock->setTemplate('sitewards/wrapper.phtml');
+		$wrapperBlock->setTemplate('sitewards/bigpipe/wrapper.phtml');
 		$wrapperBlock->setElementId($this->getElementId());
 		$wrapperBlock->setChild('content', $this->getLoadingBlock());
 		return $wrapperBlock;
@@ -58,7 +58,7 @@ class Sitewards_BigPipe_Block_Wrapper
 		if ($this->loadingTemplate) {
 			$loadingBlock->setTemplate($this->loadingTemplate);
 		} else {
-			$loadingBlock->setTemplate('sitewards/loading.phtml');
+			$loadingBlock->setTemplate('sitewards/bigpipe/loading.phtml');
 		}
 		return $loadingBlock;
 	}

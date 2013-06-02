@@ -1,9 +1,5 @@
 /app/code/community/Sitewards/BigPipe /app/code/community/Sitewards/BigPipe
 /app/design/frontend/base/default/layout/sitewards/bigpipe.xml /app/design/frontend/base/default/layout/sitewards/bigpipe.xml
-/app/design/frontend/base/default/template/sitewards/afterload.phtml /app/design/frontend/base/default/template/sitewards/afterload.phtml
-/app/design/frontend/base/default/template/sitewards/container/end.phtml /app/design/frontend/base/default/template/sitewards/container/end.phtml
-/app/design/frontend/base/default/template/sitewards/container/start.phtml /app/design/frontend/base/default/template/sitewards/container/start.phtml
-/app/design/frontend/base/default/template/sitewards/loading.phtml /app/design/frontend/base/default/template/sitewards/loading.phtml
-/app/design/frontend/base/default/template/sitewards/wrapper.phtml /app/design/frontend/base/default/template/sitewards/wrapper.phtml
+/app/design/frontend/base/default/template/sitewards/bigpipe /app/design/frontend/base/default/template/sitewards/bigpipe
 /app/etc/modules/Sitewards_BigPipe.xml /app/etc/modules/Sitewards_BigPipe.xml
 /skin/frontend/base/default/js/sitewards/bigpipe.js /skin/frontend/base/default/js/sitewards/bigpipe.js

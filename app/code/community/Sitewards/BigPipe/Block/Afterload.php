@@ -18,7 +18,7 @@ class Sitewards_BigPipe_Block_Afterload extends Mage_Core_Block_Template {
 	 * set the default template
 	 */
 	protected function _construct() {
-		$this->setTemplate('sitewards/afterload.phtml');
+		$this->setTemplate('sitewards/bigpipe/afterload.phtml');
 		return parent::_construct();
 	}
 

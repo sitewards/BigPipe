@@ -13,7 +13,7 @@ class Sitewards_BigPipe_Block_Container_End extends Mage_Core_Block_Template  {
 	 * set the default template
 	 */
 	protected function _construct() {
-		$this->setTemplate('sitewards/container/end.phtml');
+		$this->setTemplate('sitewards/bigpipe/container/end.phtml');
 		return parent::_construct();
 	}
 
