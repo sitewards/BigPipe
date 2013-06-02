@@ -73,4 +73,4 @@ magento@sitewards.com
 
 License: OSL 3.0
 
-Contribution is appreciated!
+Contribution is appreciated, even new issues!
