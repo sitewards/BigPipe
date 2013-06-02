@@ -62,7 +62,7 @@ There are no requirements what has to be inside that template file. All the magi
 
 Ideas
 ------------------
-* Mashup with Houston to parallelize rendering of blocks
+* Mashup with [https://github.com/airbone42/Houston][Houston] or any other multi-threading framework to parallelize rendering of blocks
 * remove core_layout rewrite
 * add an optional flush after head-tag so css and js can be loaded while server is still processing the site (after first research we decided this will be a new module and is not related to BigPipe)
 * add feature for a big pipe block in a big pipe, which will be rendered after the parent was rendered
