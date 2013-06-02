@@ -26,6 +26,8 @@ It's possible to define an order which bigpipe block should be rendered first:
 
 In that case foo will be rendered, flushed and after that breadcrumb will be rendered and flushed
 
+Depending on your server configuration you can configure the module to output whitespaces, until buffer size limit is reached. If the block which should be outputted is smaller than the buffer size you'll have a delay in the flush and have to wait until more blocks are rendered or script is ended to output the block. Go to "System/Configuration/Sitewards BigPipe". Default: 4096
+
 You have to disable gzip: http://stackoverflow.com/questions/4870697/php-flush-that-works-even-in-nginx
 
 Ideas
