@@ -18,6 +18,7 @@ class Sitewards_BigPipe_Model_Dispatcher {
 	 * outputs the big pipe blocks
 	 */
 	public function outputBigPipeBlocks() {
+		$this->checkConfig();
 		echo $this->getContainerStart();
 
 		$memory = Mage::getSingleton('sitewards_bigpipe/memory');
@@ -28,6 +29,15 @@ class Sitewards_BigPipe_Model_Dispatcher {
 		}
 
 		echo $this->getDocumentEnd();
+	}
+
+	/**
+	 * checks config settings required to flush single blocks properly
+	 */
+	private function checkConfig() {
+		if (ini_get('zlib.output_compression') == 1) {
+			Mage::log('Disable zlib.output_compression to use BigPipe blocks');
+		}
 	}
 
 	/**

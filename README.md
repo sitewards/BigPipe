@@ -20,6 +20,7 @@ Example to move the loading of breadcrumb to the end of your website, while most
 The Loading block collects all called method and set data and transfers it later to the real target block, so even an ->addCrumb call in that example is executed on the final block, too.
 
 You have to disable gzip: http://stackoverflow.com/questions/4870697/php-flush-that-works-even-in-nginx
+Also check your system.log, because you'll get a log message when zlib.output_compression is enabled.
 
 Define order of blocks
 ----------------------
@@ -63,7 +64,6 @@ Ideas
 ------------------
 * Mashup with Houston to parallelize rendering of blocks
 * remove core_layout rewrite
-* Check for disabled gzip
 * add an optional flush after head-tag so css and js can be loaded while server is still processing the site (after first research we decided this will be a new module and is not related to BigPipe)
 * add feature for a big pipe block in a big pipe, which will be rendered after the parent was rendered
 
