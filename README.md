@@ -28,13 +28,22 @@ In that case foo will be rendered, flushed and after that breadcrumb will be ren
 
 Depending on your server configuration you can configure the module to output whitespaces, until buffer size limit is reached. If the block which should be outputted is smaller than the buffer size you'll have a delay in the flush and have to wait until more blocks are rendered or script is ended to output the block. Go to "System/Configuration/Sitewards BigPipe". Default: 4096
 
+To execute some javascript when a block was loaded we implemented some kind of basic observer. Just implement a function with the name bigpipeObserver, that will be triggered after the block was loaded to his desired target location.
+
+    /**
+     * example for observer
+     * @param element
+     */
+    function bigpipeObserver(element) {
+        alert(element.innerHTML);
+    }
+
 You have to disable gzip: http://stackoverflow.com/questions/4870697/php-flush-that-works-even-in-nginx
 
 Ideas
 ------------------
 * implement options for different templates on loading block, so each "Loading" dialog on your page can have a different template
 * Mashup with Houston to parallelize rendering of blocks
-* javascript callback to execute some code after your block was really loaded (should be implemented using prototype event/observer)
 * remove core_layout rewrite
 * Check for disabled gzip
 * add an optional flush after head-tag so css and js can be loaded while server is still processing the site (after first research we decided this will be a new module and is not related to BigPipe)
