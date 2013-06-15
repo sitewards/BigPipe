@@ -16,7 +16,6 @@ class Sitewards_BigPipe_Model_Memory {
 
 	private $bigPipesOutput = array();
 	private $bigPipesChildren = array();
-	private $bigPipesSorted = array();
 
 	private $isSorted = false;
 
@@ -70,17 +69,26 @@ class Sitewards_BigPipe_Model_Memory {
 		if (!$this->isSorted) {
 			usort(
 				$this->bigPipesOutput,
-				function (Sitewards_BigPipe_Block_Node $a, Sitewards_BigPipe_Block_Node $b) {
-					$aOrder = (int)$a->getOriginalNode()->attributes()->{'bigpipe-order'};
-					$bOrder = (int)$b->getOriginalNode()->attributes()->{'bigpipe-order'};
-					if ($aOrder == $bOrder) {
-						return 0;
-					}
-					return ($aOrder < $bOrder) ? -1 : 1;
-				}
+				array($this, 'compareByBigPipeOrder')
 			);
 			$this->isSorted = true;
 		}
+	}
+
+	/**
+	 * compare by bigpipe-order attribute
+	 *
+	 * @param Sitewards_BigPipe_Block_Node $a
+	 * @param Sitewards_BigPipe_Block_Node $b
+	 * @return int
+	 */
+	private function compareByBigPipeOrder(Sitewards_BigPipe_Block_Node $a, Sitewards_BigPipe_Block_Node $b) {
+		$aOrder = (int)$a->getOriginalNode()->attributes()->{'bigpipe-order'};
+		$bOrder = (int)$b->getOriginalNode()->attributes()->{'bigpipe-order'};
+		if ($aOrder == $bOrder) {
+			return 0;
+		}
+		return ($aOrder < $bOrder) ? -1 : 1;
 	}
 
 	/**
