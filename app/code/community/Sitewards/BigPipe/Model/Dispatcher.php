@@ -9,6 +9,12 @@
  * @license     OSL-3.0
  */
 class Sitewards_BigPipe_Model_Dispatcher {
+
+	/**
+	 * @var Varien_Event_Observer
+	 */
+	protected $oObserver;
+
 	protected function flush() {
 		flush();
 		ob_flush();
@@ -17,18 +23,41 @@ class Sitewards_BigPipe_Model_Dispatcher {
 	/**
 	 * outputs the big pipe blocks
 	 */
-	public function outputBigPipeBlocks() {
+	public function outputBigPipeBlocks(Varien_Event_Observer $oObserver) {
+		$this->oObserver = $oObserver;
+
 		$this->checkConfig();
 		echo $this->getContainerStart();
 
 		$memory = Mage::getSingleton('sitewards_bigpipe/memory');
+		$aOriginalBlocksToCache = array();
 		while ($memory->hasBigPipeBlock()) {
 			$block = $memory->getNextBigPipeBlock();
 			$originalBlock = $this->getGeneratedOriginalBlock($block);
 			$this->outputBlock($block->getBigPipeId(), $originalBlock);
+			$aOriginalBlocksToCache[$block->getBigPipeId()] = $originalBlock;
 		}
-
+		$this->cacheBigPipe($aOriginalBlocksToCache);
 		echo $this->getDocumentEnd();
+	}
+
+	/**
+	 * Replace BigPipe markers in response objrct with original block html and
+	 * save response in cache
+	 *
+	 * @param array $aBlocksToCache
+	 */
+	protected function cacheBigPipe(array $aBlocksToCache) {
+		$oResponse = $this->oObserver->getEvent()->getFront()->getResponse();
+		$sBody = $oResponse->getBody();
+		foreach ($aBlocksToCache as $sBigPipeId => $oBlock) {
+			$sStrToReplace = '<span id="bigpipe-' . $sBigPipeId . '">Loading ...</span>';
+			$sBody = str_replace($sStrToReplace, $oBlock->toHtml(), $sBody);
+		}
+		$oResponse->setBody($sBody);
+		if ($oPageCacheObserver = Mage::getModel('enterprise_pagecache/observer')) {
+			$oPageCacheObserver->cacheResponse($this->oObserver);
+		}
 	}
 
 	/**

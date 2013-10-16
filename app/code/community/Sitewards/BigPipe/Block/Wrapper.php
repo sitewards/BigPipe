@@ -95,6 +95,17 @@ class Sitewards_BigPipe_Block_Wrapper
 	}
 
 	/**
+	 * This method should not be called by __call
+	 * because it should return non object
+	 * otherwise you will get error in Enterprise_PageCache_Model_Config::getBlockPlaceholder()
+	 *
+	 * @return null
+	 */
+	public function getType() {
+		return null;
+	}
+
+	/**
 	 * returns all called methods including arguments
 	 *
 	 * @return array
